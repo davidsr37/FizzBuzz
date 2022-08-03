@@ -3,18 +3,30 @@ import XCTest
 
 struct MultiplesService {
     func isMultipleOfThree(int: Int) -> Bool  {
-        return false
+        int.isMultiple(of: 3)
+    }
+
+    func isMultipleOfFive(int: Int) -> Bool {
+        int.isMultiple(of: 5)
     }
 }
 
 class FizBuzzTests: XCTestCase {
+
+    let service = MultiplesService()
+
     func testMultiplesServiceExists() {
-        let service = MultiplesService()
         XCTAssertNotNil(service)
     }
 
     func testMultipleOfThree() {
-        let service = MultiplesService()
         XCTAssertFalse(service.isMultipleOfThree(int: 5))
+        XCTAssertTrue(service.isMultipleOfThree(int: 6))
     }
+
+    func testMultipleOfFive() {
+        XCTAssertTrue(service.isMultipleOfFive(int: 5))
+        XCTAssertFalse(service.isMultipleOfFive(int: 6))
+    }
+
 }
