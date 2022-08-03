@@ -1,5 +1,3 @@
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for FizBuzz.
