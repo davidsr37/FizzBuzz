@@ -17,6 +17,10 @@ extension Int {
     }
 }
 
+func getArrayOfStringsFromUpperBound(_ upperBound: Int) -> [String] {
+    (1...upperBound).map {String($0)}
+}
+
 class FizBuzzTests: XCTestCase {
 
     func testMultipleOfThree() {
@@ -31,6 +35,18 @@ class FizBuzzTests: XCTestCase {
 
     func testMultipleOfThreeAndFive() {
         XCTAssertTrue(15.isMultipleOfThreeFive())
+    }
+
+    func testArrayOutputStrings() {
+        let array = getArrayOfStringsFromUpperBound(3)
+        let result = ["1", "2", "3"]
+        XCTAssertEqual(array, result)
+    }
+
+    func testArrayOutputStringsForFour() {
+        let array = getArrayOfStringsFromUpperBound(4)
+        let result = ["1", "2", "3", "4"]
+        XCTAssertEqual(array, result)
     }
 
 }
