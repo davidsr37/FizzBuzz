@@ -1,32 +1,36 @@
 import XCTest
 @testable import FizBuzz
 
-struct MultiplesService {
-    func isMultipleOfThree(int: Int) -> Bool  {
-        int.isMultiple(of: 3)
+
+extension Int {
+
+    func isMultipleOfThree() -> Bool  {
+        self.isMultiple(of: 3)
     }
 
-    func isMultipleOfFive(int: Int) -> Bool {
-        int.isMultiple(of: 5)
+    func isMultipleOfFive() -> Bool {
+        self.isMultiple(of: 5)
+    }
+
+    func isMultipleOfThreeFive() -> Bool {
+        self.isMultipleOfFive() && self.isMultipleOfThree()
     }
 }
 
 class FizBuzzTests: XCTestCase {
 
-    let service = MultiplesService()
-
-    func testMultiplesServiceExists() {
-        XCTAssertNotNil(service)
-    }
-
     func testMultipleOfThree() {
-        XCTAssertFalse(service.isMultipleOfThree(int: 5))
-        XCTAssertTrue(service.isMultipleOfThree(int: 6))
+        XCTAssertFalse(5.isMultipleOfThree())
+        XCTAssertTrue(6.isMultipleOfThree())
     }
 
     func testMultipleOfFive() {
-        XCTAssertTrue(service.isMultipleOfFive(int: 5))
-        XCTAssertFalse(service.isMultipleOfFive(int: 6))
+        XCTAssertTrue(5.isMultipleOfFive())
+        XCTAssertFalse(6.isMultipleOfFive())
+    }
+
+    func testMultipleOfThreeAndFive() {
+        XCTAssertTrue(15.isMultipleOfThreeFive())
     }
 
 }
